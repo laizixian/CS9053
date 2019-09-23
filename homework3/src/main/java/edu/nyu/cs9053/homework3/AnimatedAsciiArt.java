@@ -21,7 +21,16 @@ public class AnimatedAsciiArt {
      * @return converted {@linkplain ImageInfoProvider[]}
      */
     protected static ImageInfoProvider[] convert(String[] files) {
-	// TODO - implement
+        // TODO - implement
+        if (files == null || files.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        final int len = files.length;
+        ImageInfoProvider[] convertedImageInfoProvider = new ImageInfoProvider[len];
+        for (int i = 0; i < len; i++) {
+            ImageInfoProvider[i] = convert(files[i]);
+        }
+        return convertedImageInfoProvider;
     }
 
     protected static ImageInfoProvider convert(String file) {
@@ -58,6 +67,12 @@ public class AnimatedAsciiArt {
      */
     public void play() {
 	// TODO - implement
+        for (ImageInfoProvider p : providers) {
+            printer.clearScreen();
+            char[][] currImage = converter.convert(p);
+            printer.print(currImage);
+            sleep();
+        }
     }
 
     protected void sleep() {

@@ -1,5 +1,5 @@
 package edu.nyu.cs9053.homework3;
-
+import java.lang.Math;
 /**
  * User: blangel
  */
@@ -30,6 +30,15 @@ public class AsciiArtConverter {
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
 	// TODO - implement this
+        int row = infoProvider.getHeight();
+        int col = infoProvider.getWidth();
+        char[][] convertChar = new char[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                convertChar[i][j] = getCharacterForPixel(grayscaler.grayScale(infoProvider.getPixel(i, j)));
+            }
+        }
+        return convertChar;
     }
 
     /**
@@ -41,6 +50,8 @@ public class AsciiArtConverter {
      */
     protected char getCharacterForPixel(double pixel) {
 	// TODO - implement this
+        int index = Math.ceil(pixel / 255d * (ASCII_ART_LOOKUP_TABLE.length - 1));
+        return ASCII_ART_LOOKUP_TABLE[index];
     }
 
 }
