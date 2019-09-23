@@ -12,13 +12,15 @@ public class AsciiArtPrinter {
     public void print(char[][] asciiArt) {
 	// TODO - implement this
         final int row = asciiArt.length;
-        final int col = asciiArt.length;
+        final int col = asciiArt[0].length;
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < row; i++) {
             for (int j = 0 ; j < col; j++) {
-                System.out.print(asciiArt[i][j]);
+                sb.append(asciiArt[j][i]);
             }
-            System.out.println("");
+            sb.append("\n");
         }
+        System.out.print(sb.toString());
     }
 
     protected void clearScreen() {

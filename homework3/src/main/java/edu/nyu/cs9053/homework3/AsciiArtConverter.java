@@ -30,8 +30,8 @@ public class AsciiArtConverter {
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
 	// TODO - implement this
-        int row = infoProvider.getHeight();
-        int col = infoProvider.getWidth();
+        int row = infoProvider.getWidth();
+        int col = infoProvider.getHeight();
         char[][] convertChar = new char[row][col];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -50,7 +50,7 @@ public class AsciiArtConverter {
      */
     protected char getCharacterForPixel(double pixel) {
 	// TODO - implement this
-        int index = Math.ceil(pixel / 255d * (ASCII_ART_LOOKUP_TABLE.length - 1));
+        int index = (int) Math.ceil((pixel / 255d * (double)(ASCII_ART_LOOKUP_TABLE.length - 1)));
         return ASCII_ART_LOOKUP_TABLE[index];
     }
 

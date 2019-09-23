@@ -28,7 +28,7 @@ public class AnimatedAsciiArt {
         final int len = files.length;
         ImageInfoProvider[] convertedImageInfoProvider = new ImageInfoProvider[len];
         for (int i = 0; i < len; i++) {
-            ImageInfoProvider[i] = convert(files[i]);
+            convertedImageInfoProvider[i] = convert(files[i]);
         }
         return convertedImageInfoProvider;
     }
@@ -68,8 +68,8 @@ public class AnimatedAsciiArt {
     public void play() {
 	// TODO - implement
         for (ImageInfoProvider p : providers) {
-            printer.clearScreen();
             char[][] currImage = converter.convert(p);
+            printer.clearScreen();
             printer.print(currImage);
             sleep();
         }
