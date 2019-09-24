@@ -30,12 +30,12 @@ public class AsciiArtConverter {
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
 	// TODO - implement this
-        int row = infoProvider.getWidth();
-        int col = infoProvider.getHeight();
+        int row = infoProvider.getHeight();
+        int col = infoProvider.getWidth();
         char[][] convertChar = new char[row][col];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                convertChar[i][j] = getCharacterForPixel(grayscaler.grayScale(infoProvider.getPixel(i, j)));
+                convertChar[i][j] = getCharacterForPixel(grayscaler.grayScale(infoProvider.getPixel(j, i)));
             }
         }
         return convertChar;

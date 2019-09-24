@@ -16,7 +16,7 @@ public class AsciiArtPrinter {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < row; i++) {
             for (int j = 0 ; j < col; j++) {
-                sb.append(asciiArt[j][i]);
+                sb.append(asciiArt[i][j]);
             }
             sb.append("\n");
         }
@@ -24,7 +24,8 @@ public class AsciiArtPrinter {
     }
 
     protected void clearScreen() {
-        System.out.printf("\u001B[51;1H");
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
 }
